@@ -1,0 +1,44 @@
+body, h2, ul{
+  margin: 0;
+}
+ul li{
+  display: inline-block;
+  text-decoration: none;
+}
+.wrapper{
+  background: url('../../images/run.jpg') no-repeat;
+  background-size: cover;
+  min-height: 550px;
+}
+.container{
+  position: relative;
+  top: 40px;
+  margin: 0 5%;
+}
+header h2, header ul{
+  display: inline-block;
+}
+.logo{
+  border: 1px solid black;
+  padding: 2%;
+  width: 10%;
+  text-align: center;
+}
+header .forms{
+  float: right;
+}
+header .forms li:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+article{
+  position: relative;
+  top: 150px;
+  left: 25%;
+  max-width: 80%;
+}
+footer ul li{
+  line-height: 70px;
+  padding: 0 10px;
+}
