@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   # Remember to create a migration!
+  validates :email, uniqueness: true
 
   has_many :i_am_following, :class_name => "Follow", :foreign_key => "stalker_id"
 

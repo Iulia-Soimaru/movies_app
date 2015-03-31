@@ -1,3 +1,5 @@
+<!-- Time.now.strftime("%m/%d/%Y") -->
+<!-- Time.now.strftime("%I:%M%p") -->
 <div class='wrapper'>
   <header>
     <h2 class="logo">Logo</h2>
@@ -8,6 +10,12 @@
     <ul>
       <li>
         <h3>Welcome <%= @user.full_name %></h3>
+      </li>
+      <li>
+        <form action="/logout" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="logout">
+        </form>
       </li>
     </ul>
   </header>

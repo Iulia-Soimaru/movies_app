@@ -8,7 +8,8 @@
 </div>
 
 <div class="popup_signin">
-  <form class="create_form_signin" action="/signup" method="post">
+  <form class="create_form_signin" action="/signin" method="post">
+    <input type="hidden" name="_method" value="put">
     <div class="row"><input type="email" placeholder="email" name="email"></div>
     <div class="row"><input type="password" placeholder="password" name="password"></div>
     <div class="row"><input type="submit" value="sign in"></div>

@@ -4,6 +4,11 @@ get '/' do
   erb :main
 end
 
+delete '/logout' do
+  session.destroy
+  redirect '/'
+end
+
 # get '/search' do
 
 #   # if Movie.all.include?('params[:title]')
@@ -20,6 +25,7 @@ end
 
 ##############################################################
 
+
 post '/signup' do
   @user = User.new(full_name: params[:full_name], email: params[:email], password: params[:password])
   if @user.save
@@ -32,11 +38,12 @@ post '/signup' do
   end
 end
 
-post '/signin' do
+
+put '/signin' do
   @sign_in_user = User.where(email: params[:email]).first
-  if @sign_in_user && sign_in_user.password == params[:password]
+  if @sign_in_user && @sign_in_user.password == params[:password]
+    session[:user_id] = @sign_in_user.id
     status 200
-    session[:user_id] == @sign_in_user.id
     redirect "/profile/#{@sign_in_user.id}"
   else
     status 404
