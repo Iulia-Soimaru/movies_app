@@ -6,24 +6,40 @@
       <li><a href="#">Contact Us</a></li>
     </ul>
     <ul class="forms">
-      <li><input type="submit" value="SignIn"></li>
-      <li><input type="submit" value="SignUp"></li>
+      <li>
+        <form action="/sign_up" method='post'>
+          <input type="submit" value="SignUp">
+        </form>
+      </li>
+      <li>
+        <form action="sign_in" method="post">
+          <input type="submit" value="SignIn">
+        </form>
+      </li>
     </ul>
   </header>
   <article>
     <h2>Find movie that you have just watched</h2>
-    <form action="/search" method="get" class="search_form">
+    <form action="" method="get" class="search_form">
       <input name="title" class='title' type="text" placeholder="movie title">
       <input type="submit" value="search" class="search">
     </form>
   </article>
 </div>
   <div class="search_result">
-    <div class='post'>
-      <div class='image'></div>
-      <div class="movie_description"></div>
+    <div class="post-template">
+      <div class="image">
+        <img class="poster">
+      </div>
+      <div class="movie_description">
+        <p class="title"><strong>Title: </strong><span></span></p>
+        <p class="year"><strong>Year: </strong><span></span></p>
+        <p class="duration"><strong>Duration: </strong><span></span></p>
+        <p class="actors"><strong>Actors: </strong><span></span></p>
+        <p class="director"><strong>Director: </strong><span></span></p>
+        <p class="rating"><strong>Rating: </strong><span></span></p>
+      </div>
     </div>
-
   </div>
 <footer>
   <ul>

@@ -37,27 +37,32 @@ article{
 }
 .search_result{
   padding: 10%;
+  min-height: 260px;
+  text-align: center;
 }
 .search_result{
-  text-align: center;
+  display: none;
 }
 .image{
   float: left;
+  width: 38%
 }
 .movie_description{
   float: right;
+  vertical-align: top;
+  width: 58%;
 }
-.search_result .poster{
+.image .poster{
   width: 60%;
   height: 70%;
 }
 .movie_description:after{
   content: '';
   display: block;
+  clear: both
 }
 footer{
-  position: fixed;
-  bottom: 0;
+
   width: 100%;
   background: #221334;
 }
