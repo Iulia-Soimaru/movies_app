@@ -1,26 +1,58 @@
 require 'json'
 
 get '/' do
-
-
   erb :main
 end
 
-get '/search' do
+# get '/search' do
 
-  # if Movie.all.include?('params[:title]')
-  #   movie =
-  # @title = params[:title].to_s
-  # @movie = get_data_from_db(@title)
-  # # @movie = Movie.find()
-  # content_type :json
-  # @movie = Movie.new(title: )
-  # # movie = ''
-  # omdb_movie = open("http://www.omdbapi.com/?t=" + params[:title] + "&y=&plot=long")
-  # p movie
+#   # if Movie.all.include?('params[:title]')
+#   #   movie =
+#   # @title = params[:title].to_s
+#   # @movie = get_data_from_db(@title)
+#   # # @movie = Movie.find()
+#   # content_type :json
+#   # @movie = Movie.new(title: )
+#   # # movie = ''
+#   # omdb_movie = open("http://www.omdbapi.com/?t=" + params[:title] + "&y=&plot=long")
+#   # p movie
+# end
+
+##############################################################
+
+post '/signup' do
+  @user = User.new(full_name: params[:full_name], email: params[:email], password: params[:password])
+  if @user.save
+    status 200
+    session[:user_id] = @user.id
+    redirect "profile/#{@user.id}"
+  else
+    status 404
+    "Sorry mistake happened during sign up"
+  end
+end
+
+post '/signin' do
+  @sign_in_user = User.where(email: params[:email]).first
+  if @sign_in_user && sign_in_user.password == params[:password]
+    status 200
+    session[:user_id] == @sign_in_user.id
+    redirect "/profile/#{@sign_in_user.id}"
+  else
+    status 404
+    "Sorry error happened during sign in"
+  end
 end
 
 ##############################################################
 
-# get '/'
+get '/profile/:user_id' do
+  @user = User.find(params[:user_id])
+  erb :profile
+end
+
+      # t.string :full_name
+      # t.string :email
+      # t.string :password
+      # t.date :birthday
 

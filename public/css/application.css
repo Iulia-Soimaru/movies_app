@@ -24,6 +24,7 @@ ul li{
 header h2, header ul{
   float: left;
 }
+/**************************************************************/
 header{
   padding: 40px;
   position: relative;
@@ -39,6 +40,7 @@ header{
 .nav, .forms{
   line-height: 3.8em;
 }
+/**************************************************************/
 article{
   text-align: center;
   position: absolute;
@@ -47,6 +49,7 @@ article{
   left: 0;
   right: 0;
 }
+/**************************************************************/
 .search_result{
   padding: 10%;
   min-height: 260px;
@@ -73,14 +76,17 @@ article{
   display: block;
   clear: both
 }
+/**************************************************************/
 footer{
-
   width: 100%;
   background: #221334;
 }
 footer ul li{
   line-height: 70px;
   padding: 0 10px;
+}
+footer a{
+  color: white;
 }
 /**************************************************************/
 .overlay{
