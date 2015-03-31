@@ -1,6 +1,8 @@
 require 'json'
 
 get '/' do
+
+
   erb :main
 end
 

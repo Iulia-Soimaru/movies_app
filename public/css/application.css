@@ -1,3 +1,6 @@
+html, body{
+  height: 100%;
+}
 body, h2, ul{
   margin: 0;
 }
@@ -10,7 +13,7 @@ ul li{
   height: 100%;
   /*width: 100%;*/
   background: url('../../images/run.jpg') no-repeat center center;
-  background-size: 100% 100%;
+  background-size: cover;
   /*margin: 0 auto;*/
 }
 .wrapper:after{
@@ -19,22 +22,30 @@ ul li{
 }
 
 header h2, header ul{
-  display: inline-block;
+  float: left;
 }
 header{
-  padding: 4%;
+  padding: 40px;
+  position: relative;
 }
 .logo{
   border: 1px solid black;
-  padding: 2%;
-  width: 10%;
+  padding: 15px;
   text-align: center;
 }
 .forms{
-  margin-left: 50%;
+  float: right;
+}
+.nav, .forms{
+  line-height: 3.8em;
 }
 article{
   text-align: center;
+  position: absolute;
+  top: 50%;
+  margin-top: -40px;
+  left: 0;
+  right: 0;
 }
 .search_result{
   padding: 10%;
@@ -72,3 +83,33 @@ footer ul li{
   padding: 0 10px;
 }
 /**************************************************************/
+.overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0, .8);
+  text-align: center;
+  z-index: 5;
+  display: none;
+
+}
+.popup_signup, .popup_signin{
+  width: 55%;
+  height: 300px;
+  position: absolute;
+  top: 30%;
+  left: 22%;
+  margin-top: -40px;
+  background: white;
+  z-index: 10;
+  display: none;
+}
+
+/**************************************************************/
+.create_form_signup, .create_form_signin{
+  text-align: center;
+  padding: 20px;
+}
+.create_form_signup input, .create_form_signin input{
+  margin-bottom: 20px;
+}

@@ -47,5 +47,30 @@ $(document).ready(function() {
 
 ///////////////////////////////////////////////////////////////////
 
-  $('.')
+  var $offsetTop = $('.search_result').offset().top;
+  $('.search').on('click', function(){
+    $('body').animate({
+      scrollTop: $(window).height()
+    }, 1000);
+  });
+
+  $('.signup').on('click', function(event){
+    event.preventDefault();
+    $('.overlay').css({display: "block"});
+    $('.popup_signup').css({display: "block"});
+  });
+
+  $('.signin').on('click', function(event){
+    event.preventDefault();
+    $('.overlay').css({display: "block"});
+    $('.popup_signin').css({display: "block"});
+  });
+
+    $(document).on('click', '.overlay',function() {
+        $('.overlay, .popup_signup, .popup_signin').fadeOut('2000',function(){//use 3000 in place of 300m
+            // $('.overlay').remove();
+        });
+        return false;
+    });
+
 });
