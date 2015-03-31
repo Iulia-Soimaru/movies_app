@@ -6,17 +6,22 @@ ul li{
   text-decoration: none;
 }
 .wrapper{
-  background: url('../../images/run.jpg') no-repeat;
+  /*position: absolute;*/
+  height: 100%;
+  width: 100%;
+  background: url('../../images/run.jpg') no-repeat center center;
   background-size: cover;
-  min-height: 550px;
 }
-.container{
-  position: relative;
-  top: 40px;
-  margin: 0 5%;
+.wrapper:after{
+  content: '';
+  display: block;
 }
+
 header h2, header ul{
   display: inline-block;
+}
+header{
+  padding: 4%;
 }
 .logo{
   border: 1px solid black;
@@ -24,19 +29,37 @@ header h2, header ul{
   width: 10%;
   text-align: center;
 }
-header .forms{
-  float: right;
-}
-header .forms li:after{
-  content: '';
-  display: block;
-  clear: both;
+.forms{
+  margin-left: 50%;
 }
 article{
-  position: relative;
-  top: 150px;
-  left: 25%;
-  max-width: 80%;
+  text-align: center;
+}
+.search_result{
+  padding: 10%;
+}
+.search_result{
+  text-align: center;
+}
+.image{
+  float: left;
+}
+.movie_description{
+  float: right;
+}
+.search_result .poster{
+  width: 60%;
+  height: 70%;
+}
+.movie_description:after{
+  content: '';
+  display: block;
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #221334;
 }
 footer ul li{
   line-height: 70px;

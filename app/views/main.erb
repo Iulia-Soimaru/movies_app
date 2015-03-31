@@ -1,23 +1,30 @@
 <div class='wrapper'>
-  <div class="container">
-    <header>
-      <h2 class="logo">Logo</h2>
-      <ul class='nav'>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-      <ul class="forms">
-        <li><input type="submit" value="SignIn"></li>
-        <li><input type="submit" value="SignUp"></li>
-      </ul>
-    </header>
-    <article>
-      <h2>Find movie that you have just watched</h2>
-      <input type="text" placeholder="movie title">
-      <input type="submit" value="search">
-    </article>
-  </div>
+  <header>
+    <h2 class="logo">Logo</h2>
+    <ul class='nav'>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+    <ul class="forms">
+      <li><input type="submit" value="SignIn"></li>
+      <li><input type="submit" value="SignUp"></li>
+    </ul>
+  </header>
+  <article>
+    <h2>Find movie that you have just watched</h2>
+    <form action="/search" method="get" class="search_form">
+      <input name="title" class='title' type="text" placeholder="movie title">
+      <input type="submit" value="search" class="search">
+    </form>
+  </article>
 </div>
+  <div class="search_result">
+    <div class='post'>
+      <div class='image'></div>
+      <div class="movie_description"></div>
+    </div>
+
+  </div>
 <footer>
   <ul>
     <li><a href="#">Twitter</a></li>
