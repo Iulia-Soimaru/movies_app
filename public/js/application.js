@@ -72,5 +72,21 @@ $(document).ready(function() {
         });
         return false;
     });
+///////////////////////////////////////////////////////////////////
+
+  // $('.add_to_watched').on('click', function(event){
+  //   event.preventDefault();
+
+  //   $.ajax({
+  //     url: $('.add_form').attr('action');
+  //     type: "post";
+  //     data: {
+
+  //     }
+  //   }).done(function(data){
+  //     console.log(data)
+  //   })
+
+  // })
 
 });

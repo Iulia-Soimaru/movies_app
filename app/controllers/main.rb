@@ -4,8 +4,9 @@ get '/' do
   erb :main
 end
 
+
 delete '/logout' do
-  session.destroy
+  session.delete(:user_id)
   redirect '/'
 end
 
@@ -42,6 +43,7 @@ end
 put '/signin' do
   @sign_in_user = User.where(email: params[:email]).first
   if @sign_in_user && @sign_in_user.password == params[:password]
+    session[:user_id] = true
     session[:user_id] = @sign_in_user.id
     status 200
     redirect "/profile/#{@sign_in_user.id}"
@@ -56,6 +58,11 @@ end
 get '/profile/:user_id' do
   @user = User.find(params[:user_id])
   erb :profile
+end
+
+
+get '/profile/:user_id/movie_list' do
+  erb :movie_list
 end
 
       # t.string :full_name

@@ -2,14 +2,12 @@
 <!-- Time.now.strftime("%I:%M%p") -->
 <div class='wrapper'>
   <header>
-    <h2 class="logo">Logo</h2>
-    <ul class="nav">
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact Us</a></li>
-    </ul>
     <ul>
       <li>
         <h3>Welcome <%= @user.full_name %></h3>
+      </li>
+      <li>
+        <a href="/profile/<%= @user.id %>/movie_list">List of Movies you've watched</a>
       </li>
       <li>
         <form action="/logout" method="post">
@@ -28,6 +26,9 @@
   </article>
 </div>
 <%= erb(:search) %>
+<form action="/add_to_watched" method="post" class="add_form">
+  <input type="submit" class="add_to_watched" value="add to watched">
+</form>
 <footer>
   <ul>
     <li><a href="#">Twitter</a></li>
