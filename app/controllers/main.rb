@@ -60,14 +60,19 @@ get '/profile/:user_id' do
   erb :profile
 end
 
+get '/profile/:user_id/movie_list' do
+  erb :movie_list
+end
+
 put '/profile/:user_id' do
   @user = User.find(session[:user_id])
   @title = params[:title]
+  searched_movie = Omdb::Api.new.search(@title)
+  @user.movies << Movie.create(searched_movie)
 
 
 
 
-  # movie = Omdb::Api.new.search(@title)
   # p movie
 
   # # OR
@@ -81,14 +86,9 @@ put '/profile/:user_id' do
   # movie ||= Movie.new(... movie ...)
 
 
-  # @movie = Movie.new(title: data.Title )
   redirect '/profile/:user_id/movie_list'
 end
 
-
-get '/profile/:user_id/movie_list' do
-  erb :movie_list
-end
 
       # t.string :full_name
       # t.string :email

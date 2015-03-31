@@ -1,7 +1,7 @@
 <!-- Time.now.strftime("%m/%d/%Y") -->
 <!-- Time.now.strftime("%I:%M%p") -->
 <div class='wrapper'>
-  <% if current_user %>
+  <% if is_current_user?(@user) %>
     <header>
       <ul>
         <li>
@@ -39,10 +39,12 @@
   </article>
 </div>
 <%= erb(:search) %>
-<form action="/add_to_watched" method="post" class="add_form">
-  <input type="hidden" name="_method" value="put">
-  <input type="submit" class="add_to_watched" value="add to watched">
-</form>
+<% if is_current_user?(@user) %>
+  <form action="/profile/<%= @user.id %>" method="post" class="add_form">
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" class="add_to_watched" value="add to watched">
+  </form>
+<% end %>
 <footer>
   <ul>
     <li><a href="#">Twitter</a></li>

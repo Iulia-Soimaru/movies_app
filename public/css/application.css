@@ -28,6 +28,7 @@ header h2, header ul{
 header{
   padding: 40px;
   position: relative;
+  z-index: 4;
 }
 .logo{
   border: 1px solid black;
