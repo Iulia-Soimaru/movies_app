@@ -1,12 +1,13 @@
 require 'json'
+require 'omdb'
 
 get '/' do
   erb :main
 end
 
 
-delete '/logout' do
-  session.delete(:user_id)
+get '/logout' do
+  logout!
   redirect '/'
 end
 
@@ -28,11 +29,11 @@ end
 
 
 post '/signup' do
-  @user = User.new(full_name: params[:full_name], email: params[:email], password: params[:password])
-  if @user.save
+  user = User.new(full_name: params[:full_name], email: params[:email], password: params[:password])
+  if user.save
     status 200
-    session[:user_id] = @user.id
-    redirect "profile/#{@user.id}"
+    login_as_user(user)
+    redirect "profile/#{user.id}"
   else
     status 404
     "Sorry mistake happened during sign up"
@@ -41,12 +42,11 @@ end
 
 
 put '/signin' do
-  @sign_in_user = User.where(email: params[:email]).first
-  if @sign_in_user && @sign_in_user.password == params[:password]
-    session[:user_id] = true
-    session[:user_id] = @sign_in_user.id
+  user = User.where(email: params[:email]).first
+  if user && user.password == params[:password]
+    login_as_user(user)
     status 200
-    redirect "/profile/#{@sign_in_user.id}"
+    redirect "/profile/#{user.id}"
   else
     status 404
     "Sorry error happened during sign in"
@@ -58,6 +58,31 @@ end
 get '/profile/:user_id' do
   @user = User.find(params[:user_id])
   erb :profile
+end
+
+put '/profile/:user_id' do
+  @user = User.find(session[:user_id])
+  @title = params[:title]
+
+
+
+
+  # movie = Omdb::Api.new.search(@title)
+  # p movie
+
+  # # OR
+
+  # # content_type :json
+  # # content = open("http://www.omdbapi.com/?t=" + title + "&y=&plot=long");
+  # # data = JSON.parse(content)
+  # # if data
+
+  # movie = Movie.where(???).first
+  # movie ||= Movie.new(... movie ...)
+
+
+  # @movie = Movie.new(title: data.Title )
+  redirect '/profile/:user_id/movie_list'
 end
 
 

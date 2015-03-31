@@ -9,20 +9,31 @@ $(document).ready(function() {
     // var openData = open("http://www.omdbapi.com/?")
 
     $.ajax({
-      url: "http://www.omdbapi.com/?t=" + $('.title').val() + "&y=&plot=long"
-      // data:
+      url: "http://www.omdbapi.com/",
+      data: {
+        t: $('.title').val(),
+        y: null,
+        plot: 'long',
+      },
     }).done(function(data){
       $('.search_result').css({display: "block"})
-      var $post_template = $('.post-template');
-      $post_template.find('.image img').attr('src', data.Poster);
-      $post_template.find('.title span').text(data.Title);
-      $post_template.find('.year span').text(data.Year);
-      $post_template.find('.duration span').text(data.Runtime);
-      $post_template.find('.actors span').text(data.Actors);
-      $post_template.find('.director span').text(data.Director);
-      $post_template.find('.rating span').text(data.imdbRating);
+      if (data.Response === "False"){
+        $('.search_result').append("<h3>Sorry this movie wasn't found <br />Try again</h3>");
+        $('.post-template').hide();
+      } else {
+        var $post_template = $('.post-template');
+        $post_template.find('.image img').attr('src', data.Poster);
+        $post_template.find('.title span').text(data.Title);
+        $post_template.find('.year span').text(data.Year);
+        $post_template.find('.duration span').text(data.Runtime);
+        $post_template.find('.actors span').text(data.Actors);
+        $post_template.find('.director span').text(data.Director);
+        $post_template.find('.rating span').text(data.imdbRating);
 
 
+        $('.search_result').append($post_template);
+        $('.title').val('')
+      }
       // $('.search_result').append("<div class='post'>");
       // $('.post').append("<div class='image'>");
       // $('.post .image').append('<img class="poster" src="' + data.Poster + '">')
@@ -36,8 +47,6 @@ $(document).ready(function() {
       // $('.post .movie_description').append('<p>Rating: ' + data.imdbRating + '</p>');
       // $('.post').append('</div>');
 
-      $('.search_result').append($post_template);
-      $('.title').val('')
 
     }).fail(function(){
       console.log('call failed!')

@@ -1,22 +1,35 @@
 <!-- Time.now.strftime("%m/%d/%Y") -->
 <!-- Time.now.strftime("%I:%M%p") -->
 <div class='wrapper'>
-  <header>
-    <ul>
-      <li>
-        <h3>Welcome <%= @user.full_name %></h3>
-      </li>
-      <li>
-        <a href="/profile/<%= @user.id %>/movie_list">List of Movies you've watched</a>
-      </li>
-      <li>
-        <form action="/logout" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="logout">
-        </form>
-      </li>
-    </ul>
-  </header>
+  <% if current_user %>
+    <header>
+      <ul>
+        <li>
+          <h3>Welcome Back <%= @user.full_name %></h3>
+        </li>
+        <li>
+          <a href="/profile/<%= @user.id %>/movie_list">List of Movies you've watched</a>
+        </li>
+        <li>
+          <a href="/logout">logout</a>
+        </li>
+      </ul>
+    </header>
+    <!-- <a href="/logout">Logout</a> -->
+  <% else %>
+    <header>
+      <ul>
+        <li>
+          <h3>Profile of <%= @user.full_name %></h3>
+        </li>
+        <li>
+          <a href="/profile/<%= @user.id %>/movie_list">
+            List of your friend movies
+          </a>
+        </li>
+      </ul>
+    </header>
+  <% end %>
   <article>
     <h2>Find movie that you have just watched</h2>
     <form action="" method="get" class="search_form">
@@ -27,6 +40,7 @@
 </div>
 <%= erb(:search) %>
 <form action="/add_to_watched" method="post" class="add_form">
+  <input type="hidden" name="_method" value="put">
   <input type="submit" class="add_to_watched" value="add to watched">
 </form>
 <footer>
