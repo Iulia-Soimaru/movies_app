@@ -1,5 +1,5 @@
 require 'json'
-# require 'omdb'
+require 'omdb'
 require 'httparty'
 
 get '/' do
@@ -74,26 +74,40 @@ get '/profile/:user_id/movie_list' do
   erb :movie_list
 end
 
-post '/profile/:user_id' do
-  p "1" *100
-  @user = User.find(session[:user_id])
-  # @title = params[:title]
-  p params[:title]
-  # p @title
-  movie = @user.movies << Movie.create(title: params[:title])
-  p @user
-  p "hi" * 100
-  if movie.last.save #I think it made it work
-    p "saved" * 100
-    status 200
-    content_type :json
-    {title: movie.title}.to_json
-    # redirect "/profile/#{@user.id}/movie_list"
-  else
-    status 404
-    p "Erorr message"
-  end
+# post '/profile/:user_id' do
+#   p "1" *100
+#   @user = User.find(session[:user_id])
+#   # @title = params[:title]
+#   p params[:title]
+#   # p @title
+#   movie = @user.movies << Movie.create(title: params[:title])
+#   p @user
+#   p "hi" * 100
+#   if movie.last.save #I think it made it work
+#     p "saved" * 100
+#     status 200
+#     content_type :json
+#     {title: movie.title}.to_json
+#     # redirect "/profile/#{@user.id}/movie_list"
+#   else
+#     status 404
+#     p "Erorr message"
+#   end
 
+post '/profile/:user_id' do
+  @user = User.find(session[:user_id])
+  @title = params[:title]
+  content_type :json
+  @movie = HTTParty.get("http://www.omdbapi.com/?t=#{URI.escape(@title)}")
+  data_json = JSON(@movie)
+  p data_json
+end
+
+
+
+
+
+# end
   # searched_movie = open("http://www.omdbapi.com/?t=" + @title + "&y=&plot=long")
   # # p searched_movie
   # data = JSON.parse(searched_movie)
@@ -116,7 +130,7 @@ post '/profile/:user_id' do
   # p "$" * 70
 
 
-end
+
 
 
 
