@@ -97,7 +97,7 @@ $(document).ready(function() {
       console.log("ajax call worked")
       console.log(response)
       alert(response)
-      // $('.all_movies').append(response.title)
+      $('.all_movies').append(response.title)
     })
 
   })

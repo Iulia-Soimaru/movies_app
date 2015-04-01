@@ -78,12 +78,12 @@ post '/profile/:user_id' do
   p "1" *100
   @user = User.find(session[:user_id])
   # @title = params[:title]
-  p params
+  p params[:title]
   # p @title
-  movie = @user.movies.new(title: params[:title])
+  movie = @user.movies << Movie.create(title: params[:title])
   p @user
   p "hi" * 100
-  if movie.save
+  if movie.last.save
     p "saved" * 100
     status 200
     content_type :json
