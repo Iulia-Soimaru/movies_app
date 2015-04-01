@@ -83,7 +83,7 @@ post '/profile/:user_id' do
   movie = @user.movies << Movie.create(title: params[:title])
   p @user
   p "hi" * 100
-  if movie.last.save
+  if movie.last.save #I think it made it work
     p "saved" * 100
     status 200
     content_type :json

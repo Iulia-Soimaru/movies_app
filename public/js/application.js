@@ -94,12 +94,9 @@ $(document).ready(function() {
       type: "post",
       data: {title: $(title).text()}
     }).done(function(response){
-      console.log("ajax call worked")
-      console.log(response)
-      alert(response)
       $('.all_movies').append(response.title)
-    })
-
+    });
+      alert("You successfully added movie to your list")
   })
 
 });

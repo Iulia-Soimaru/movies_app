@@ -1,5 +1,7 @@
 <div class="all_movies">
   <% @user.movies.each do |movie| %>
-    <p><%= movie.title %></p>
+    <div>
+      <p><%= movie.title %></p>
+    </div>
   <% end %>
 </div>
