@@ -24,7 +24,12 @@ $(document).ready(function() {
         $('.post-template').hide();
       } else {
         var $post_template = $('.post-template');
+        if (data.Poster === "N/A"){
+          $post_template.find('.image img').attr('src', "http://www.filmfodder.com/reviews/images/poster-not-available.jpg")
+        } else {
         $post_template.find('.image img').attr('src', data.Poster);
+        };
+
         $post_template.find('.title span').text(data.Title);
         $post_template.find('.year span').text(data.Year);
         $post_template.find('.duration span').text(data.Runtime);
@@ -34,7 +39,8 @@ $(document).ready(function() {
 
 
         $('.search_result').append($post_template);
-        $('.title').val('')
+        $('.title').val('');
+        $('.hidden').show();
       }
       // $('.search_result').append("<div class='post'>");
       // $('.post').append("<div class='image'>");

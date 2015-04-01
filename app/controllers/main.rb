@@ -99,8 +99,24 @@ post '/profile/:user_id' do
   @title = params[:title]
   content_type :json
   @movie = HTTParty.get("http://www.omdbapi.com/?t=#{URI.escape(@title)}")
-  data_json = JSON(@movie)
-  p data_json
+  p @user.movies << Movie.create(title: @movie["Title"], year: @movie["Year"], runtime: @movie["Runtime"], genre: @movie["Genre"], director: @movie["Director"], writer: @movie["Writer"], actors: @movie["Actors"], plot: @movie["Plot"], language: @movie["Language"], country: @movie["Country"], awards: @movie["Awards"], imdbRating: @movie["imdbRating"], poster: @movie["Poster"])
+
+   # t.string :title
+   #    t.integer :year
+   #    t.string :runtime
+   #    t.string :genre
+   #    t.string :director
+   #    t.string :writer
+   #    t.string :actors
+   #    t.string :actors
+   #    t.string :plot
+   #    t.string :language
+   #    t.string :country
+   #    t.string :awards
+   #    t.string :poster
+   #    t.string :imdbRating
+  # data_json = J@movie)
+  # p data_json
 end
 
 

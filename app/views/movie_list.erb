@@ -1,7 +1,9 @@
 <div class="all_movies">
   <% @user.movies.each do |movie| %>
     <div>
+      <img src="<%= movie.poster %>" alt="">
       <p><%= movie.title %></p>
+      <p><%= movie.actors %></p>
     </div>
   <% end %>
 </div>

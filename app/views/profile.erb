@@ -42,7 +42,7 @@
 <% if is_current_user?(@user) %>
   <form action="/profile/<%= @user.id %>" method="post" class="add_form">
     <!-- <input type="hidden" name="_method" value="put" > -->
-    <input type="submit" class="add_to_watched" value="add to watched">
+    <input type="submit" class="add_to_watched hidden" value="add to watched">
   </form>
 <% end %>
 <footer>
