@@ -1,8 +1,8 @@
 class CreateMovieLists < ActiveRecord::Migration
   def change
     create_table :movie_lists do |t|
-      t.integer :user_id
-      t.integer :movie_id
+      t.references :user
+      t.references :movie
     end
   end
 end

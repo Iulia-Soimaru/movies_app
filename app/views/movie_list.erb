@@ -1,1 +1,5 @@
-movie_list.erb
+<div class="all_movies">
+  <% @user.movies.each do |movie| %>
+    <p><%= movie.title %></p>
+  <% end %>
+</div>

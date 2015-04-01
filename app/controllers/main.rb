@@ -1,7 +1,16 @@
 require 'json'
-require 'omdb'
+# require 'omdb'
+require 'httparty'
 
 get '/' do
+  # movie = open("http://www.omdbapi.com/?t=" + title + "&y=&plot=long")
+  # data = JSON.parse
+  # # title = params[:title]
+  # p "*" * 70
+  # p params
+  # p "*" * 70
+  # response = HTTParty.get("http://www.omdbapi.com/?t=" + title + "&y=&plot=long")
+  # puts response.body
   erb :main
 end
 
@@ -61,14 +70,53 @@ get '/profile/:user_id' do
 end
 
 get '/profile/:user_id/movie_list' do
+  @user = User.find(session[:user_id])
   erb :movie_list
 end
 
-put '/profile/:user_id' do
+post '/profile/:user_id' do
+  p "1" *100
   @user = User.find(session[:user_id])
-  @title = params[:title]
-  searched_movie = Omdb::Api.new.search(@title)
-  @user.movies << Movie.create(searched_movie)
+  # @title = params[:title]
+  p params
+  # p @title
+  movie = @user.movies.new(title: params[:title])
+  p @user
+  p "hi" * 100
+  if movie.save
+    p "saved" * 100
+    status 200
+    content_type :json
+    {title: movie.title}.to_json
+    # redirect "/profile/#{@user.id}/movie_list"
+  else
+    status 404
+    p "Erorr message"
+  end
+
+  # searched_movie = open("http://www.omdbapi.com/?t=" + @title + "&y=&plot=long")
+  # # p searched_movie
+  # data = JSON.parse(searched_movie)
+
+  # #Omdb::Api.new.search(title: @title)
+  # get_searched_movie = Omdb::Api.new.parse_movies("http://www.omdbapi.com/?t=" + title + "&y=&plot=long")
+  # p "#" * 60
+  # p get_searched_movie
+  # p "#" * 60
+  # @user.movies << Movie.create(get_searched_movie[:movies])
+
+  # content_type :json
+  # content = open("http://www.omdbapi.com/?t=" + title + "&y=&plot=long")
+  # p "%" * 70
+  # p content
+  # p "%" * 70
+  # data = JSON.parse(content)
+  # p "$" * 70
+  # p data
+  # p "$" * 70
+
+
+end
 
 
 
@@ -77,17 +125,11 @@ put '/profile/:user_id' do
 
   # # OR
 
-  # # content_type :json
-  # # content = open("http://www.omdbapi.com/?t=" + title + "&y=&plot=long");
-  # # data = JSON.parse(content)
-  # # if data
 
   # movie = Movie.where(???).first
   # movie ||= Movie.new(... movie ...)
 
 
-  redirect '/profile/:user_id/movie_list'
-end
 
 
       # t.string :full_name

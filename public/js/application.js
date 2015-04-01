@@ -2,11 +2,13 @@ $(document).ready(function() {
   // This is called after the document has loaded in its entirety
   // This guarantees that any elements we bind to will exist on the page
   // when we try to bind to them
-
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
   $('.search').click(function(event){
     event.preventDefault();
     // var openData = open("http://www.omdbapi.com/?")
+    // var title = function(data){
+
+    // }
 
     $.ajax({
       url: "http://www.omdbapi.com/",
@@ -56,7 +58,7 @@ $(document).ready(function() {
 
 ///////////////////////////////////////////////////////////////////
 
-  var $offsetTop = $('.search_result').offset().top;
+  // var $offsetTop = $('.search_result').offset().top;
   $('.search').on('click', function(){
     $('body').animate({
       scrollTop: $(window).height()
@@ -83,19 +85,21 @@ $(document).ready(function() {
     });
 ///////////////////////////////////////////////////////////////////
 
-  // $('.add_to_watched').on('click', function(event){
-  //   event.preventDefault();
+  $('.add_to_watched').on('click', function(event){
+    event.preventDefault();
+    // debugger
+    var title = $('p.title span')[0];
+    $.ajax({
+      url: $('.add_form').attr('action'),
+      type: "post",
+      data: {title: $(title).text()}
+    }).done(function(response){
+      console.log("ajax call worked")
+      console.log(response)
+      alert(response)
+      // $('.all_movies').append(response.title)
+    })
 
-  //   $.ajax({
-  //     url: $('.add_form').attr('action');
-  //     type: "post";
-  //     data: {
-
-  //     }
-  //   }).done(function(data){
-  //     console.log(data)
-  //   })
-
-  // })
+  })
 
 });

@@ -32,7 +32,7 @@
   <% end %>
   <article>
     <h2>Find movie that you have just watched</h2>
-    <form action="" method="get" class="search_form">
+    <form action="/" method="get" class="search_form">
       <input name="title" class='title' type="text" placeholder="movie title">
       <input type="submit" value="search" class="search">
     </form>
@@ -41,7 +41,7 @@
 <%= erb(:search) %>
 <% if is_current_user?(@user) %>
   <form action="/profile/<%= @user.id %>" method="post" class="add_form">
-    <input type="hidden" name="_method" value="put">
+    <!-- <input type="hidden" name="_method" value="put" > -->
     <input type="submit" class="add_to_watched" value="add to watched">
   </form>
 <% end %>
