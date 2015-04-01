@@ -1,0 +1,21 @@
+.movie_wrapper{
+  width: 80%;
+  margin: auto;
+}
+.one_movie{
+  background: orange;
+  margin-bottom: 10px;
+  min-height: 12.6em;
+  padding: 2%;
+}
+.poster_left, .info_right{
+  display: inline-block;
+}
+.poster_left img{
+  width: 150px;
+  height: 200px;
+}
+.info_right{
+  vertical-align: top;
+  padding-left: 20px;
+}

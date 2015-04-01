@@ -24,4 +24,10 @@ What to do next:
 2. People can have their on rating on "watched list" page and compare it to IMDB rating
 3. People can leave comments about the movie, on "watched list" page
 
+
+April 1st things that are working
+1. I have access to OMDb api and I can save their data to my database
+2. User is able to add movies to his "watched list" and display it on his profile
+3. All unneccessary buttons and links are hidden and they are displayed just when we need to use them
+
 <img src="image.jpeg" alt="">

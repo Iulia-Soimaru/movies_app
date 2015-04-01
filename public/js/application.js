@@ -71,6 +71,12 @@ $(document).ready(function() {
     }, 1000);
   });
 
+  $('.back').on('click', function(){
+    $('body').animate({
+      scrollBottom: $(document).height() - $(window).height()
+    }, 1000);
+  });
+
   $('.signup').on('click', function(event){
     event.preventDefault();
     $('.overlay').css({display: "block"});

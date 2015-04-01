@@ -1,9 +1,14 @@
-<div class="all_movies">
+<div class="movie_wrapper">
+  <p><%= @user.full_name %></p>
   <% @user.movies.each do |movie| %>
-    <div>
-      <img src="<%= movie.poster %>" alt="">
-      <p><%= movie.title %></p>
-      <p><%= movie.actors %></p>
+    <div class="one_movie">
+      <div class="poster_left">
+        <img src="<%= movie.poster %>" alt="">
+      </div>
+      <div class="info_right">
+        <h3><%= movie.title %></h3>
+        <p><%= movie.actors %></p>
+      </div>
     </div>
   <% end %>
 </div>
