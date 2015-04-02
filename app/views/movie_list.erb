@@ -1,3 +1,4 @@
+<div class="background"></div>
 <div class="movie_wrapper">
   <% if is_current_user?(@user)%>
     <p><%= @user.full_name %></p>
@@ -10,18 +11,22 @@
         <div class="info_right">
           <h3><%= movie.title %></h3>
           <p><%= movie.actors %></p>
-          <ul class="rating_stars">
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-          </ul>
+          <p>ImDb rating: <%= movie.imdbRating %></p>
+          <p class="my_rating">Your rating: <span></span></p>
+          <form class="form_rating" action="/<%= movie.id%>/rating" method="post">
+            <ul class="rating_stars">
+              <li class="star"><a class="one" href=""><i class="fa fa-star"></i></a></li>
+              <li class="star"><a class="two" href=""><i class="fa fa-star"></i></a></li>
+              <li class="star"><a class="three" href=""><i class="fa fa-star"></i></a></li>
+              <li class="star"><a class="four" href=""><i class="fa fa-star"></i></a></li>
+              <li class="star"><a class="five" href=""><i class="fa fa-star"></i></a></li>
+              <li class="star"><a class="six" href=""><i class="fa fa-star"></i></a></li>
+              <li class="star"><a class="seven" href=""><i class="fa fa-star"></i></a></li>
+              <li class="star"><a class="eight" href=""><i class="fa fa-star"></i></a></li>
+              <li class="star"><a class="nine" href=""><i class="fa fa-star"></i></a></li>
+              <li class="star"><a class="ten" href=""><i class="fa fa-star"></i></a></li>
+            </ul>
+          </form>
         </div>
       </div>
     <% end %>

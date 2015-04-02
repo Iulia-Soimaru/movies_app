@@ -1,6 +1,22 @@
+.background{
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /*background-color: rgba(0, 0, 0, 0.5)*/
+}
+.poster_left, .info_right, .one_movie{
+  z-index: 5;
+  position: relative;
+}
 .movie_wrapper{
   width: 80%;
+  height: 100%;
   margin: auto;
+  z-index: 5;
+  position: relative;
 }
 .one_movie{
   background: orange;
@@ -29,3 +45,4 @@
 .rating_stars a:hover{
   color: green;
 }
+

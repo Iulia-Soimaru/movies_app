@@ -75,8 +75,27 @@ get '/profile/:user_id/movie_list' do
   erb :movie_list
 end
 
-post '/profile/:user_id/movie_list/:movie_id/rating' do
-  @movie = Movie.where(title: params[:title])
+post '/:movie_id/rating' do
+  @user = User.find(session[:user_id])
+  # @movie = Movie.where(id: params[:movie_id]).first.ratings.first
+  p "*" * 100
+  p @user
+  p "*" * 100
+  p params
+  # @rating = @user.movies.where(id: params[:movie_id]).first.ratings.first
+  movie = Movie.find(params[:movie_id])
+  p movie
+
+  p "*" * 100
+  p movie.ratings.count
+  p movie.ratings.create(my_rate: params[:my_rate])
+  p movie.ratings.count
+  p "*" * 100
+  p @rating
+  # p "#" * 100
+  # p @movie
+  content_type :json
+  # {my_rating: movie.my_rate}.to_json
 end
 
 # post '/profile/:user_id' do
@@ -104,7 +123,13 @@ post '/profile/:user_id' do
   @title = params[:title]
   content_type :json
   @movie = HTTParty.get("http://www.omdbapi.com/?t=#{URI.escape(@title)}")
-  p @user.movies << Movie.create(title: @movie["Title"], year: @movie["Year"], runtime: @movie["Runtime"], genre: @movie["Genre"], director: @movie["Director"], writer: @movie["Writer"], actors: @movie["Actors"], plot: @movie["Plot"], language: @movie["Language"], country: @movie["Country"], awards: @movie["Awards"], imdbRating: @movie["imdbRating"], poster: @movie["Poster"])
+  p "#" * 100
+  if Movie.where(title: @movie["Title"]).first
+    @movie = Movie.where(title: @movie["Title"]).first
+    p "Movie already exists"
+  else
+    @user.movies << Movie.create(title: @movie["Title"], year: @movie["Year"], runtime: @movie["Runtime"], genre: @movie["Genre"], director: @movie["Director"], writer: @movie["Writer"], actors: @movie["Actors"], plot: @movie["Plot"], language: @movie["Language"], country: @movie["Country"], awards: @movie["Awards"], imdbRating: @movie["imdbRating"], poster: @movie["Poster"])
+  end
 
    # t.string :title
    #    t.integer :year

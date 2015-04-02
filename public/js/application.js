@@ -141,6 +141,35 @@ $(document).ready(function() {
   });
   // $('.add_to_friends').val('already your friend')
   //   $('.add_to_friends').css({background: "orange"})
+///////////////////////////////////////////////////////////////////
+// RATINGS ////////////////////////////////////////////////////////
+  $('.star').on('click', function(event){
+    event.preventDefault();
+    // debugger
+    var myRating = $(this).find('a').attr('class')
+    var link = $(this).parent().parent().attr('action')
+    console.log(myRating)
+    console.log(link)
+    // debugger
+    // console.log($(this).parent().parent().attr('action'))
+    $.ajax({
+      url: link,
+      type: "POST",
+      data: {my_rate: myRating}
+    }).done(function(data){
+      console.log(data)
+    })
+
+    // .success(function(){
+    //   alert("yay")
+    // }).fail(function(){alert('fail')})
+
+
+
+
+    $('.rating_stars').hide()
+    $('.my_rating span').text(myRating)
+  });
 
 
 });

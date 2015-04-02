@@ -25,4 +25,9 @@ helpers do
     session.clear
   end
 
+  # def movie_exists?(movie)
+  #   @movie = Movie.where(title: params[:title]).first
+  #   if @movie
+  # end
+
 end
