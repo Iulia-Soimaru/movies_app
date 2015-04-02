@@ -119,6 +119,24 @@ post '/profile/:user_id' do
   # p data_json
 end
 
+get '/search' do
+  @user = User.where(full_name: params[:name]).first
+  if !@user
+    status 404
+    "Not found this user, try again"
+  else
+    redirect "/profile/#{@user.id}"
+  end
+end
+
+post '/profile/:user_id/add' do
+  @current_user = User.find(session[:user_id])
+  @user = User.find(params[:user_id])
+  @current_user.preys << @user
+  content_type :json
+  {person_name: @user.full_name }.to_json
+  # redirect "/profile/#{@user.id}"
+end
 
 
 

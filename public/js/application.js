@@ -85,12 +85,20 @@ $(document).ready(function() {
 
   $('.signin').on('click', function(event){
     event.preventDefault();
+    console.log($('.overlay'))
     $('.overlay').css({display: "block"});
     $('.popup_signin').css({display: "block"});
   });
 
+  $('.search_friends').on('click', function(event){
+    event.preventDefault();
+    $('.overlay').css({display:"block"});
+    $('.search_people').show();
+    $('.search_name').val('');
+  })
+
     $(document).on('click', '.overlay',function() {
-        $('.overlay, .popup_signup, .popup_signin').fadeOut('2000',function(){//use 3000 in place of 300m
+        $('.overlay, .popup_signup, .popup_signin, .search_people').fadeOut('2000',function(){//use 3000 in place of 300m
             // $('.overlay').remove();
         });
         return false;
@@ -109,6 +117,28 @@ $(document).ready(function() {
       $('.all_movies').append(response.title)
     });
       alert("You successfully added movie to your list")
+  })
+
+  $('.add_to_friends').on('click', function(event){
+    event.preventDefault();
+    alert("This person was successfully added to your friends list");
+
+    $.ajax({
+      url: $('.add_person').attr('action'),
+      type: 'post',
+      data: {person_name: $('h3 span').text()}
+    }).done(function(response){
+      // console.log(response);
+    $('.list_of_my_friends').append('<p>'+ response.person_name + '</p>')
+    });
+
+  });
+  // $('.add_to_friends').val('already your friend')
+  //   $('.add_to_friends').css({background: "orange"})
+
+  $('.list_of_friends').on('click', function(event){
+    event.preventDefault();
+    $('.list_of_my_friends').show();
   })
 
 });

@@ -16,5 +16,19 @@
   </form>
 </div>
 
+<div class="search_people">
+  <form action="/search" method="get">
+    <!-- <input type="hidden" name="_method" value="put"> -->
+    <input type="text" class="search_name" name="name" placeholder="search person by name">
+    <input type="submit" value="search">
+  </form>
+</div>
+
+<div class="list_of_my_friends">
+  <% @user.preys.each do |friend| %>
+    <%= friend.full_name %>
+  <% end %>
+</div>
+
 <div class="overlay">
 </div>

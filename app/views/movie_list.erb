@@ -1,5 +1,6 @@
 <div class="movie_wrapper">
   <p><%= @user.full_name %></p>
+  <a href="/profile/<%= @user.id %>">Back to my profile</a>
   <% @user.movies.each do |movie| %>
     <div class="one_movie">
       <div class="poster_left">

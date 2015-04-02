@@ -1,5 +1,6 @@
 <!-- Time.now.strftime("%m/%d/%Y") -->
 <!-- Time.now.strftime("%I:%M%p") -->
+<%= erb(:forms)%>
 <div class='wrapper'>
   <% if is_current_user?(@user) %>
     <header>
@@ -14,13 +15,19 @@
           <a href="/logout">logout</a>
         </li>
       </ul>
+      <a class="search_friends" href="/search_friends">Search other people</a>
+      <a class="list_of_friends" href="/list_of_friends">List of your friends</a>
     </header>
     <!-- <a href="/logout">Logout</a> -->
   <% else %>
     <header>
       <ul>
         <li>
-          <h3>Profile of <%= @user.full_name %></h3>
+          <h3>Profile of <span><%= @user.full_name %></span></h3>
+          <form class="add_person" action="/profile/<%= @user.id %>/add" method="post">
+            <!-- <input type="hidden" name="_method" value="put"> -->
+            <input type="submit" class="add_to_friends" value="add to friends">
+          </form>
         </li>
         <li>
           <a href="/profile/<%= @user.id %>/movie_list">

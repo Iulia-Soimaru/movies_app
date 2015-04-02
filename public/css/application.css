@@ -24,14 +24,10 @@ ul li{
   display: block;
 }
 
-header h2, header ul{
-  float: left;
-}
+
 /**************************************************************/
 header{
   padding: 40px;
-  position: relative;
-  z-index: 4;
 }
 .logo{
   border: 1px solid black;
@@ -115,6 +111,30 @@ footer a{
   display: none;
 }
 
+.search_people{
+  background: white;
+  width: 55%;
+  height: 100px;
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  margin-top: -40px;
+  z-index: 10;
+  padding: 30px;
+  display: none;
+  text-align: center;
+}
+
+.list_of_my_friends{
+  background: white;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 40%;
+  display: none;
+}
+
+
 /**************************************************************/
 .create_form_signup, .create_form_signin{
   text-align: center;
@@ -123,3 +143,14 @@ footer a{
 .create_form_signup input, .create_form_signin input{
   margin-bottom: 20px;
 }
+
+
+/**************************************************************/
+
+
+
+
+
+
+
+
