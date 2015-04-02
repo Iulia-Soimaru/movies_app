@@ -1,15 +1,31 @@
 <div class="movie_wrapper">
-  <p><%= @user.full_name %></p>
-  <a href="/profile/<%= @user.id %>">Back to my profile</a>
-  <% @user.movies.each do |movie| %>
-    <div class="one_movie">
-      <div class="poster_left">
-        <img src="<%= movie.poster %>" alt="">
+  <% if is_current_user?(@user)%>
+    <p><%= @user.full_name %></p>
+    <a href="/profile/<%= @user.id %>">Back to my profile</a>
+    <% @user.movies.each do |movie| %>
+      <div class="one_movie">
+        <div class="poster_left">
+          <img src="<%= movie.poster %>" alt="">
+        </div>
+        <div class="info_right">
+          <h3><%= movie.title %></h3>
+          <p><%= movie.actors %></p>
+        </div>
       </div>
-      <div class="info_right">
-        <h3><%= movie.title %></h3>
-        <p><%= movie.actors %></p>
+    <% end %>
+  <% else %>
+    <p><%= @user.preys.find() %></p>
+    <a href="/profile/<%= @user.id %>">Back to my profile</a>
+    <% @user.movies.each do |movie| %>
+      <div class="one_movie">
+        <div class="poster_left">
+          <img src="<%= movie.poster %>" alt="">
+        </div>
+        <div class="info_right">
+          <h3><%= movie.title %></h3>
+          <p><%= movie.actors %></p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+
 </div>

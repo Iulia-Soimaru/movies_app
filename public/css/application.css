@@ -127,10 +127,14 @@ footer a{
 
 .list_of_my_friends{
   background: white;
-  width: 200px;
-  height: 200px;
+  width: 40%;
+  height: 350px;
   position: absolute;
-  top: 40%;
+  top: 20%;
+  left: 25%;
+  z-index: 10;
+  padding: 5%;
+  overflow: scroll;
   display: none;
 }
 

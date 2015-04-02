@@ -97,8 +97,14 @@ $(document).ready(function() {
     $('.search_name').val('');
   })
 
+  $('.list_of_friends').on("click", function(event){
+    event.preventDefault();
+    $('.overlay').show();
+    $('.list_of_my_friends').show();
+  })
+
     $(document).on('click', '.overlay',function() {
-        $('.overlay, .popup_signup, .popup_signin, .search_people').fadeOut('2000',function(){//use 3000 in place of 300m
+        $('.overlay, .popup_signup, .popup_signin, .search_people, .list_of_my_friends').fadeOut('2000',function(){//use 3000 in place of 300m
             // $('.overlay').remove();
         });
         return false;
@@ -136,9 +142,5 @@ $(document).ready(function() {
   // $('.add_to_friends').val('already your friend')
   //   $('.add_to_friends').css({background: "orange"})
 
-  $('.list_of_friends').on('click', function(event){
-    event.preventDefault();
-    $('.list_of_my_friends').show();
-  })
 
 });

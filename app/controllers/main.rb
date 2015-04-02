@@ -65,7 +65,8 @@ end
 ##############################################################
 
 get '/profile/:user_id' do
-  @user = User.find(params[:user_id])
+  @user = User.find(session[:user_id])
+  # @another_user = User.find(params[:user_id])
   erb :profile
 end
 
