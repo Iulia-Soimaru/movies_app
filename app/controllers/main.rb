@@ -75,6 +75,10 @@ get '/profile/:user_id/movie_list' do
   erb :movie_list
 end
 
+post '/profile/:user_id/movie_list/:movie_id/rating' do
+  @movie = Movie.where(title: params[:title])
+end
+
 # post '/profile/:user_id' do
 #   p "1" *100
 #   @user = User.find(session[:user_id])

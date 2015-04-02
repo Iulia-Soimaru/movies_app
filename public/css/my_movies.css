@@ -19,3 +19,13 @@
   vertical-align: top;
   padding-left: 20px;
 }
+.rating_stars li{
+  text-decoration: none;
+  display: inline-block;
+}
+.rating_stars a{
+  color: white;
+}
+.rating_stars a:hover{
+  color: green;
+}
