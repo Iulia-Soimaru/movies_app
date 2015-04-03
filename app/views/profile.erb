@@ -4,19 +4,21 @@
 <div class='wrapper'>
   <% if is_current_user?(@user) %>
     <header>
-      <ul>
+      <ul class="options">
         <li>
-          <h3>Welcome Back <%= @user.full_name %></h3>
+          <h3 class="welcome">Welcome Back <%= @user.full_name %></h3>
+        </li><br>
+        <li class="prof_links">
+          <a class="movie_list_link" href="/profile/<%= @user.id %>/movie_list">List of Movies you've watched</a>
         </li>
-        <li>
-          <a href="/profile/<%= @user.id %>/movie_list">List of Movies you've watched</a>
+        <li class="prof_links">
+          <a class="search_friends" href="/search_friends">Search other people</a>
         </li>
-        <li>
-          <a href="/logout">logout</a>
+        <li class="prof_links">
+          <a class="list_of_friends" href="/list_of_friends">List of your friends</a>
         </li>
       </ul>
-      <a class="search_friends" href="/search_friends">Search other people</a>
-      <a class="list_of_friends" href="/list_of_friends">List of your friends</a>
+      <a class="logout" href="/logout">LOGOUT</a>
     </header>
     <!-- <a href="/logout">Logout</a> -->
   <% else %>
@@ -38,7 +40,7 @@
     </header>
   <% end %>
   <article>
-    <h2>Find movie that you have just watched</h2>
+    <h2>Find movie that you have watched</h2>
     <form action="/" method="get" class="search_form">
       <input name="title" class='title' type="text" placeholder="movie title">
       <input type="submit" value="search" class="search">
