@@ -6,7 +6,7 @@
     <header>
       <ul class="options">
         <li>
-          <h3 class="welcome">Welcome Back <%= @user.full_name %></h3>
+          <h3 class="welcome">Welcome <%= @user.full_name %></h3>
         </li><br>
         <li class="prof_links">
           <a class="movie_list_link" href="/profile/<%= @user.id %>/movie_list">List of Movies you've watched</a>
@@ -23,16 +23,18 @@
     <!-- <a href="/logout">Logout</a> -->
   <% else %>
     <header>
-      <ul>
+      <ul class="friends_options">
         <li>
-          <h3>Profile of <span><%= @user.full_name %></span></h3>
+          <h3 class="welcome">Profile of <span><%= @user.full_name %></span></h3>
+        </li>
+        <li>
           <form class="add_person" action="/profile/<%= @user.id %>/add" method="post">
             <!-- <input type="hidden" name="_method" value="put"> -->
             <input type="submit" class="add_to_friends" value="add to friends">
           </form>
         </li>
         <li>
-          <a href="/profile/<%= @user.id %>/movie_list">
+          <a class="friends_movies" href="/profile/<%= @user.id %>/movie_list">
             List of your friend movies
           </a>
         </li>
@@ -55,11 +57,11 @@
   </form>
 <% end %>
 <footer>
-  <ul>
-    <li><a href="#">Twitter</a></li>
-    <li><a href="#">Facebook</a></li>
-    <li><a href="#">Instagram</a></li>
-    <li><a href="#">Pinterest</a></li>
-    <li><a href="mailto:example@gmail.com">Contact us via Email</a></li>
+  <ul class="contact_right">
+    <li class="follow">Follow us on: </li><br>
+      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+      <li><a href="#"><i class="fa fa-pinterest-square"></i></a></li>
   </ul>
 </footer>

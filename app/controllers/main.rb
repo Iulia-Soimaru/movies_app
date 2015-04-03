@@ -44,13 +44,13 @@ end
 ##############################################################
 
 get '/profile/:user_id' do
-  @user = User.find(session[:user_id])
+  @user = User.find(params[:user_id])
   # @another_user = User.find(params[:user_id])
   erb :profile
 end
 
 get '/profile/:user_id/movie_list' do
-  @user = User.find(session[:user_id])
+  @user = User.find(params[:user_id])
   # p @user
   # p session[:user_id]
   erb :movie_list
@@ -97,6 +97,11 @@ post '/:movie_id/rating' do
     @rating.to_json
 end
 
+post '/:movie_id/comment' do
+  @user = User.find(session[:user_id])
+  @movie = Movie.find(params[:movie_id])
+end
+
 
 
 
@@ -106,7 +111,7 @@ get '/search' do
   @user = User.where(full_name: params[:name]).first
   if !@user
     status 404
-    "Not found this user, try again"
+    p "User was not found, sorry"
   else
     redirect "/profile/#{@user.id}"
   end

@@ -32,27 +32,26 @@
         </form>
         <% end %>
       </div> <!-- close .my_rating-->
-      <a class="create_comment" href="">Create a comment</a>
-      <form class="form_comment" action="" method="post">
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-        <input type="submit" value="create movie">
-      </form>
-    </div><!--  close .info_right -->
+    </div><br><!--  close .info_right -->
+
+      <!-- <a class="create_comment" href="">Create a comment</a> -->
   </div><!--   close .one_movie-->
   <% end %>
   <% else %>
-  <p><%= @user.preys.find() %></p>
-  <a href="/profile/<%= @user.id %>">Back to my profile</a>
-  <% @user.movies.each do |movie| %>
-  <div class="one_movie">
-    <div class="poster_left">
-      <img src="<%= movie.poster %>" alt="">
+    <p class="name_in_movies"><%= @user.full_name %></p>
+    <a class="link_back" href="/profile/<%= @user.id %>">Back to your friend profile</a>
+    <% @user.movies.each do |movie| %>
+    <div class="one_movie">
+      <div class="poster_left">
+        <img src="<%= movie.poster %>" alt="">
+      </div>
+      <div class="info_right">
+        <h3><%= movie.title %></h3>
+        <p><%= movie.actors %></p>
+        <p>ImDb rating: <%= movie.imdbRating %></p>
+        <div class="my_rating" id="">Friend's rating: <span><%= @user.ratings.where(user_id: @user.id, movie_id: movie.id).first.rate_value %></span>
+      </div>
     </div>
-    <div class="info_right">
-      <h3><%= movie.title %></h3>
-      <p><%= movie.actors %></p>
-    </div>
-  </div>
   <% end %>
   <% end %>
 

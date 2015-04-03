@@ -79,6 +79,20 @@ header li{
 .nav li a:hover, .forms li a:hover{
   background-color: #E2E1E7;
 }
+.add_to_friends{
+  border: none;
+  padding: 10px;
+  background: white;
+  color: #DD3D3F;
+}
+.friends_options li{
+  display: inline-block;
+}
+.friends_movies{
+  background: white;
+  color: #DD3D3F;
+  padding: 10px;
+}
 /***************************************************************/
 .options li{
   display: inline-block;
@@ -175,7 +189,7 @@ article input[type="submit"]:hover{
   color: white
 }
 .back{
-  padding: 18px 23px;
+  padding: 18px 33px;
   text-decoration: none;
 }
 .back:hover{
@@ -204,7 +218,22 @@ article input[type="submit"]:hover{
   z-index: 10;
   display: none;
 }
-
+form input, form input{
+  padding: 10px;
+}
+form .submit{
+  background: #426563;
+  border: none;
+  color: white;
+}
+form .input{
+  width: 300px;
+}
+.firends_name_link_to_profile{
+  background: #C4C7C3;
+  padding: 10px;
+  text-decoration: none;
+}
 .search_people{
   background: white;
   width: 55%;
@@ -232,6 +261,13 @@ article input[type="submit"]:hover{
   display: none;
 }
 
+.popup_form{
+  width: 400px;
+  height: 400px;
+  background: white;
+  z-index: 10;
+  display: none;
+}
 
 /**************************************************************/
 .create_form_signup, .create_form_signin{
@@ -288,7 +324,19 @@ footer a{
   position: relative;
   top: 10px;
 }
-.contact_right
+.contact_right{
+
+}
+.contact_right .follow{
+  color: white;
+  font-size: 22px;
+}
+.contact_right li{
+  display: inline-block;
+}
+.contact_right i:hover{
+  color: #DD3D3F;
+}
 /**************************************************************/
 
 

@@ -88,6 +88,13 @@ $(document).ready(function() {
     $('.list_of_my_friends').show();
   })
 
+   $('.create_comment').on('click', function(event){
+    event.preventDefault();
+    $('.overlay').css({display: "block"});
+    $('.popup_form').css({display: "block"});
+
+  });
+
     $(document).on('click', '.overlay',function() {
         $('.overlay, .popup_signup, .popup_signin, .search_people, .list_of_my_friends').fadeOut('2000',function(){//use 3000 in place of 300m
             // $('.overlay').remove();
@@ -156,6 +163,7 @@ $(document).ready(function() {
 
   });
 
+  ///////////////////////////////////////////////////////////////////////////
 
 
 });
