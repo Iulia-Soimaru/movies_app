@@ -76,27 +76,48 @@ get '/profile/:user_id/movie_list' do
 end
 
 post '/:movie_id/rating' do
-  @user = User.find(session[:user_id])
-  # @movie = Movie.where(id: params[:movie_id]).first.ratings.first
-  p "*" * 100
-  p @user
-  p "*" * 100
   p params
-  # @rating = @user.movies.where(id: params[:movie_id]).first.ratings.first
-  movie = Movie.find(params[:movie_id])
-  p movie
-
-  p "*" * 100
-  p movie.ratings.count
-  p movie.ratings.create(my_rate: params[:my_rate])
-  p movie.ratings.count
+  p "hi" * 100
+  @user = User.find(session[:user_id])
+  p @user
+  if @user.movies.where(id: params[:movie_id]).first.ratings.first != nil
+    status 200
+    @rating = Rating.create(user_id: @user.id, movie_id: params[:movie_id], rate_value:  params[:rate_value])
+    p @rating
+    content_type :json
+  else
+    status 404
+    p "This movie has been already rated"
+  end
   p "*" * 100
   p @rating
-  # p "#" * 100
-  # p @movie
-  content_type :json
-  # {my_rating: movie.my_rate}.to_json
+  {rate_value: @rating.rate_value}.to_json
 end
+
+
+
+ # @user = User.find(session[:user_id])
+  # # @movie = Movie.where(id: params[:movie_id]).first.ratings.first
+  # p "*" * 100
+  # p @user
+  # p "*" * 100
+  # p params
+  # # @rating = @user.movies.where(id: params[:movie_id]).first.ratings.first
+  # movie = Movie.find(params[:movie_id])
+  # p movie
+
+  # p "*" * 100
+  # p movie.ratings.count
+  # p movie.ratings.create(my_rate: params[:my_rate])
+  # p movie.ratings.count
+  # p "*" * 100
+  # p @rating
+  # # p "#" * 100
+  # # p @movie
+  # content_type :json
+  # # {my_rating: movie.my_rate}.to_json
+
+
 
 # post '/profile/:user_id' do
 #   p "1" *100

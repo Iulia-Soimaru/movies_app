@@ -29,4 +29,5 @@ end
 
 group :test, :development do
   gem 'factory_girl'
+  gem 'pry-byebug'
 end

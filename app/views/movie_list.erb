@@ -1,49 +1,51 @@
 <div class="background"></div>
 <div class="movie_wrapper">
   <% if is_current_user?(@user)%>
-    <p><%= @user.full_name %></p>
-    <a href="/profile/<%= @user.id %>">Back to my profile</a>
-    <% @user.movies.each do |movie| %>
-      <div class="one_movie">
-        <div class="poster_left">
-          <img src="<%= movie.poster %>" alt="">
-        </div>
-        <div class="info_right">
-          <h3><%= movie.title %></h3>
-          <p><%= movie.actors %></p>
-          <p>ImDb rating: <%= movie.imdbRating %></p>
-          <p class="my_rating">Your rating: <span></span></p>
-          <form class="form_rating" action="/<%= movie.id%>/rating" method="post">
-            <ul class="rating_stars">
-              <li class="star"><a class="one" href=""><i class="fa fa-star"></i></a></li>
-              <li class="star"><a class="two" href=""><i class="fa fa-star"></i></a></li>
-              <li class="star"><a class="three" href=""><i class="fa fa-star"></i></a></li>
-              <li class="star"><a class="four" href=""><i class="fa fa-star"></i></a></li>
-              <li class="star"><a class="five" href=""><i class="fa fa-star"></i></a></li>
-              <li class="star"><a class="six" href=""><i class="fa fa-star"></i></a></li>
-              <li class="star"><a class="seven" href=""><i class="fa fa-star"></i></a></li>
-              <li class="star"><a class="eight" href=""><i class="fa fa-star"></i></a></li>
-              <li class="star"><a class="nine" href=""><i class="fa fa-star"></i></a></li>
-              <li class="star"><a class="ten" href=""><i class="fa fa-star"></i></a></li>
-            </ul>
-          </form>
-        </div>
+  <p class="name_in_movies"><%= @user.full_name %></p>
+  <a class="link_back" href="/profile/<%= @user.id %>">Back to my profile</a>
+  <% @user.movies.each do |movie| %>
+  <div class="one_movie">
+    <div class="poster_left">
+      <img src="<%= movie.poster %>" alt="">
+    </div>
+    <div class="info_right">
+      <h3><%= movie.title %></h3>
+      <p><%= movie.actors %></p>
+      <p>ImDb rating: <%= movie.imdbRating %></p>
+
+      <div class="my_rating" id="<%= movie.ratings.first.id %>">Your rating: <span></span>
+        <form class="form_rating" action="/<%= movie.id%>/rating" method="post">
+          <ul class="rating_stars">
+            <li class="star"><a class="one" href=""><i class="fa fa-star"></i></a></li>
+            <li class="star"><a class="two" href=""><i class="fa fa-star"></i></a></li>
+            <li class="star"><a class="three" href=""><i class="fa fa-star"></i></a></li>
+            <li class="star"><a class="four" href=""><i class="fa fa-star"></i></a></li>
+            <li class="star"><a class="five" href=""><i class="fa fa-star"></i></a></li>
+            <li class="star"><a class="six" href=""><i class="fa fa-star"></i></a></li>
+            <li class="star"><a class="seven" href=""><i class="fa fa-star"></i></a></li>
+            <li class="star"><a class="eight" href=""><i class="fa fa-star"></i></a></li>
+            <li class="star"><a class="nine" href=""><i class="fa fa-star"></i></a></li>
+            <li class="star"><a class="ten" href=""><i class="fa fa-star"></i></a></li>
+          </ul>
+        </form>
       </div>
-    <% end %>
+    </div>
+  </div>
+  <% end %>
   <% else %>
-    <p><%= @user.preys.find() %></p>
-    <a href="/profile/<%= @user.id %>">Back to my profile</a>
-    <% @user.movies.each do |movie| %>
-      <div class="one_movie">
-        <div class="poster_left">
-          <img src="<%= movie.poster %>" alt="">
-        </div>
-        <div class="info_right">
-          <h3><%= movie.title %></h3>
-          <p><%= movie.actors %></p>
-        </div>
-      </div>
-    <% end %>
+  <p><%= @user.preys.find() %></p>
+  <a href="/profile/<%= @user.id %>">Back to my profile</a>
+  <% @user.movies.each do |movie| %>
+  <div class="one_movie">
+    <div class="poster_left">
+      <img src="<%= movie.poster %>" alt="">
+    </div>
+    <div class="info_right">
+      <h3><%= movie.title %></h3>
+      <p><%= movie.actors %></p>
+    </div>
+  </div>
+  <% end %>
   <% end %>
 
 </div>

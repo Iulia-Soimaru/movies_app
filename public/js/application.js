@@ -36,6 +36,7 @@ $(document).ready(function() {
         $post_template.find('.actors span').text(data.Actors);
         $post_template.find('.director span').text(data.Director);
         $post_template.find('.rating span').text(data.imdbRating);
+        $post_template.find('.trailer a').attr('href', 'https://www.youtube.com/results?search_query=' + data.Title + '+trailer');
 
 
         $('.search_result').append($post_template);
@@ -146,19 +147,36 @@ $(document).ready(function() {
   $('.star').on('click', function(event){
     event.preventDefault();
     // debugger
-    var myRating = $(this).find('a').attr('class')
-    var link = $(this).parent().parent().attr('action')
-    console.log(myRating)
-    console.log(link)
-    // debugger
-    // console.log($(this).parent().parent().attr('action'))
+    var ratingId = $(this).closest('div')[0];
+    var myRating = $(this).find('a').attr('class');
+    var spanWithNumber = $($(ratingId).find('span')[0]).text(myRating)[0];
+    var link = $(this).parent().parent().attr('action');
+    // console.log($(rate).text())
     $.ajax({
       url: link,
-      type: "POST",
-      data: {my_rate: myRating}
-    }).done(function(data){
+      type: "post",
+      data: {rate_value: $(spanWithNumber).text()}
+    }).success(function(data){
       console.log(data)
-    })
+    }).fail(function(){alert("fail")})
+
+    $(this).parent().hide()
+    // console.log($($(ratingId).find('span')[0]).text(myRating)[0])
+  });
+    // debugger
+    // var ratingId = $($(this).closest('div')[0]).attr('id');
+    // var link = $(this).parent().parent().attr('action');
+    // console.log(ratingId)
+    // console.log(link)
+    // debugger
+    // console.log($(this).parent().parent().attr('action'))
+    // $.ajax({
+    //   url: link,
+    //   type: "POST",
+    //   data: {rate_value: ratingId}
+    // }).done(function(data){
+    //   console.log(data)
+    // })
 
     // .success(function(){
     //   alert("yay")
@@ -167,9 +185,8 @@ $(document).ready(function() {
 
 
 
-    $('.rating_stars').hide()
-    $('.my_rating span').text(myRating)
-  });
+    // $('.rating_stars').hide()
+    // $('.my_rating span').text(ratingId)
 
 
 });

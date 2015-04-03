@@ -5,7 +5,20 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /*background-color: rgba(0, 0, 0, 0.5)*/
+  background: #423E3F;
+  /*background-color: #C9B5AB;*/
+}
+.name_in_movies, .link_back{
+  display: inline-block;
+  margin-left: 50px;
+  color: white;
+}
+.name_in_movies{
+  border: 1px solid white;
+  width: 150px;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
 }
 .poster_left, .info_right, .one_movie{
   z-index: 5;
@@ -19,7 +32,7 @@
   position: relative;
 }
 .one_movie{
-  background: orange;
+  background: #C9B5AB;
   margin-bottom: 10px;
   min-height: 12.6em;
   padding: 2%;
