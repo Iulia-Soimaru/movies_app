@@ -80,7 +80,6 @@ post '/profile/:user_id' do
 end
 
 
-require 'pry-byebug'
 post '/:movie_id/rating' do
   # binding.pry
   p @person = User.find(session[:user_id])
