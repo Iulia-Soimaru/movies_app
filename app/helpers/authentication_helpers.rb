@@ -6,7 +6,6 @@ helpers do
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    p session[:user_id]
   end
 
   # def logged_in?
@@ -14,7 +13,7 @@ helpers do
   # end
 
   def is_current_user?(user)
-    if current_user == user.id
+    if current_user == user
       return true
     else
       return false

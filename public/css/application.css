@@ -1,5 +1,6 @@
 html, body{
   height: 100%;
+  font-family: 'Ropa Sans', sans-serif;
 }
 body, h1, ul{
   margin: 0;
@@ -42,6 +43,9 @@ header, article{
 header{
   padding: 50px 30px;
 }
+header li{
+  list-style: none;
+}
 .logo{
   border: 1px solid black;
   padding: 3px;
@@ -74,6 +78,44 @@ header{
 }
 .nav li a:hover, .forms li a:hover{
   background-color: #E2E1E7;
+}
+.add_to_friends{
+  border: none;
+  padding: 10px;
+  background: white;
+  color: #DD3D3F;
+}
+.friends_options li{
+  display: inline-block;
+}
+.friends_movies{
+  background: white;
+  color: #DD3D3F;
+  padding: 10px;
+}
+/***************************************************************/
+.options li{
+  display: inline-block;
+}
+.welcome{
+  border: 1px solid white;
+  padding: 15px;
+  font-size: 26px;
+}
+.prof_links{
+  background: white;
+  width: 235px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.prof_links a{
+  color: red;
+}
+.logout{
+  position: absolute;
+  right: 5%;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 /**************************************************************/
@@ -131,28 +173,39 @@ article input[type="submit"]:hover{
   display: block;
   clear: both
 }
-/**************************************************************/
-footer{
-  width: 100%;
-  background: #221334;
+.add_to_watched{
+  border: none;
+  width: 10em;
+  padding: 20px 20px;
 }
-footer ul li{
-  line-height: 70px;
-  padding: 0 10px;
+.hidden{
+  background: #D6D2D4;
+  margin: 2%;
+  margin-left: 45%;
+  font-weight: bold;
 }
-footer a{
+.add_to_watched:hover{
+  background: #C43B42;
+  color: white
+}
+.back{
+  padding: 18px 33px;
+  text-decoration: none;
+}
+.back:hover{
+  background: #8A9296;
   color: white;
 }
+
 /**************************************************************/
 .overlay{
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0, .8);
+  background: rgba(0,0,0, .6);
   text-align: center;
   z-index: 5;
   display: none;
-
 }
 .popup_signup, .popup_signin{
   width: 55%;
@@ -165,7 +218,22 @@ footer a{
   z-index: 10;
   display: none;
 }
-
+form input, form input{
+  padding: 10px;
+}
+form .submit{
+  background: #426563;
+  border: none;
+  color: white;
+}
+form .input{
+  width: 300px;
+}
+.firends_name_link_to_profile{
+  background: #C4C7C3;
+  padding: 10px;
+  text-decoration: none;
+}
 .search_people{
   background: white;
   width: 55%;
@@ -193,6 +261,13 @@ footer a{
   display: none;
 }
 
+.popup_form{
+  width: 400px;
+  height: 400px;
+  background: white;
+  z-index: 10;
+  display: none;
+}
 
 /**************************************************************/
 .create_form_signup, .create_form_signin{
@@ -206,8 +281,63 @@ footer a{
 
 /**************************************************************/
 
+footer{
+  width: 100%;
+  background: #333030;
+  text-align: center;
+}
+footer ul li{
+  line-height: 70px;
+  padding: 0 10px;
+  list-style: none;
+}
+footer a{
+  color: white;
+}
+.email{
+  display: block;
+}
+.contact_left, .contact_right{
+  display: inline-block;
+}
+.footer_wrapper{
+  width: 70%;
+  margin: auto;
+  padding: 40px;
+}
+.contact_left{
+  margin-right: 30%;
+}
+.contact_left input[type="text"]{
+  width: 250px;
+  padding: 13px;
+}
+.contact_left textarea{
+  margin: 10px 0;
+  width: 273px;
+}
+.contact_left .email_button{
+  background: white;
+  color: black;
+  margin-top: 10px;
+  padding: 10px;
+  position: relative;
+  top: 10px;
+}
+.contact_right{
 
-
+}
+.contact_right .follow{
+  color: white;
+  font-size: 22px;
+}
+.contact_right li{
+  display: inline-block;
+}
+.contact_right i:hover{
+  color: #DD3D3F;
+}
+/**************************************************************/
 
 
 

@@ -25,11 +25,18 @@
 </div>
 <%= erb(:search) %>
 <footer>
-  <ul>
-    <li><a href="#">Twitter</a></li>
-    <li><a href="#">Facebook</a></li>
-    <li><a href="#">Instagram</a></li>
-    <li><a href="#">Pinterest</a></li>
-    <li><a href="mailto:example@gmail.com">Contact us via Email</a></li>
-  </ul>
+  <div class="footer_wrapper">
+    <div class="contact_left">
+      <input class="email" type="text" placeholder="subject">
+      <textarea class="email" name="" id="" cols="30" rows="10" placeholder=""></textarea>
+      <a class="email_button" href="mailto:example@gmail.com">Send us an Email</a>
+    </div>
+    <ul class="contact_right">
+      <li class="follow">Follow us on: </li><br>
+      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+      <li><a href="#"><i class="fa fa-pinterest-square"></i></a></li>
+    </ul>
+  </div>
 </footer>
