@@ -10,8 +10,11 @@ class User < ActiveRecord::Base
    has_many :stalkers, :through => :being_followed_by
 
 
-  has_many :ratings
-  has_many :movies, through: :ratings
+has_many :movie_lists
+has_many :movies, through: :movie_lists
+
+has_many :ratings
+has_many :rated_movies, through: :ratings
 
 
 end

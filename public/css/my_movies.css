@@ -58,4 +58,7 @@
 .rating_stars a:hover{
   color: green;
 }
+.form_comment{
+  display: none;
+}
 

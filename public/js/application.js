@@ -5,10 +5,6 @@ $(document).ready(function() {
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
   $('.search').click(function(event){
     event.preventDefault();
-    // var openData = open("http://www.omdbapi.com/?")
-    // var title = function(data){
-
-    // }
 
     $.ajax({
       url: "http://www.omdbapi.com/",
@@ -43,18 +39,7 @@ $(document).ready(function() {
         $('.title').val('');
         $('.hidden').show();
       }
-      // $('.search_result').append("<div class='post'>");
-      // $('.post').append("<div class='image'>");
-      // $('.post .image').append('<img class="poster" src="' + data.Poster + '">')
-      // $('.post').append('</div>');
 
-      // $('.post').append('<div class="movie_description">');
-      // $('.post .movie_description').append('<p>Title: ' + data.Title + '</p>');
-      // $('.post .movie_description').append('<p>Year: ' + data.Year + '</p>');
-      // $('.post .movie_description').append('<p>Duration: ' + data.Runtime + '</p>');
-      // $('.post .movie_description').append('<p>Actors: ' + data.Actors + '</p>');
-      // $('.post .movie_description').append('<p>Rating: ' + data.imdbRating + '</p>');
-      // $('.post').append('</div>');
 
 
     }).fail(function(){
@@ -65,7 +50,6 @@ $(document).ready(function() {
 
 ///////////////////////////////////////////////////////////////////
 
-  // var $offsetTop = $('.search_result').offset().top;
   $('.search').on('click', function(){
     $('body').animate({
       scrollTop: $(window).height()
@@ -116,15 +100,19 @@ $(document).ready(function() {
     event.preventDefault();
     // debugger
     var title = $('p.title span')[0];
+    console.log(title);
     $.ajax({
       url: $('.add_form').attr('action'),
       type: "post",
-      data: {title: $(title).text()}
+      data: {title: $(title).text(), }
     }).done(function(response){
+      console.log(response)
+      console.log($('.all_movies'))
       $('.all_movies').append(response.title)
     });
       alert("You successfully added movie to your list")
   })
+
 
   $('.add_to_friends').on('click', function(event){
     event.preventDefault();
@@ -151,42 +139,23 @@ $(document).ready(function() {
     var myRating = $(this).find('a').attr('class');
     var spanWithNumber = $($(ratingId).find('span')[0]).text(myRating)[0];
     var link = $(this).parent().parent().attr('action');
+    debugger
+    console.log(link)
     // console.log($(rate).text())
     $.ajax({
       url: link,
       type: "post",
       data: {rate_value: $(spanWithNumber).text()}
-    }).success(function(data){
+    }).done(function(data){
       console.log(data)
-    }).fail(function(){alert("fail")})
+      $(ratingId).find('span').text(data.rate_value)
+    }).fail(function(){
+      // debugger
+      alert("fail")})
+      $(this).parent().hide()
 
-    $(this).parent().hide()
-    // console.log($($(ratingId).find('span')[0]).text(myRating)[0])
   });
-    // debugger
-    // var ratingId = $($(this).closest('div')[0]).attr('id');
-    // var link = $(this).parent().parent().attr('action');
-    // console.log(ratingId)
-    // console.log(link)
-    // debugger
-    // console.log($(this).parent().parent().attr('action'))
-    // $.ajax({
-    //   url: link,
-    //   type: "POST",
-    //   data: {rate_value: ratingId}
-    // }).done(function(data){
-    //   console.log(data)
-    // })
 
-    // .success(function(){
-    //   alert("yay")
-    // }).fail(function(){alert('fail')})
-
-
-
-
-    // $('.rating_stars').hide()
-    // $('.my_rating span').text(ratingId)
 
 
 });
